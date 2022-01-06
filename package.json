@@ -1,0 +1,70 @@
+{
+  "name": "notion-next-site",
+  "private": true,
+  "version": "1.0.0",
+  "homepage": "https://github.com/zyj1022/notion-next-site.git",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "hhttps://github.com/zyj1022/notion-next-site.git"
+  },
+  "author": {
+    "name": "KINGZHI",
+    "email": "zyj10222@126.com",
+    "url": "http://codeffe.com"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.4.2",
+    "@notionhq/client": "^0.4.11",
+    "@supabase/supabase-js": "^1.29.1",
+    "copy-to-clipboard": "^3.3.1",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "framer-motion": "^5.5.5",
+    "next": "12.0.7",
+    "next-plausible": "^3.1.4",
+    "next-themes": "0.0.15",
+    "prism-react-renderer": "^1.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-share": "^4.4.0",
+    "slugify": "^1.6.5",
+    "swr": "^1.1.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.4.0",
+    "@tailwindcss/typography": "^0.5.0",
+    "@types/node": "17.0.8",
+    "@types/react": "17.0.38",
+    "autoprefixer": "^10.4.1",
+    "eslint": "8.6.0",
+    "eslint-config-next": "12.0.7",
+    "feed": "^4.2.2",
+    "husky": "^7.0.4",
+    "notion-client": "^4.12.0",
+    "notion-types": "^4.10.0",
+    "notion-utils": "^4.12.0",
+    "postcss": "^8.4.5",
+    "preact": "^10.6.4",
+    "prettier": "^2.5.1",
+    "qrcode.react": "^1.0.1",
+    "react-animated-cursor": "^2.2.0",
+    "react-notion-x": "^4.12.0",
+    "smoothscroll-polyfill": "^0.4.4",
+    "tailwindcss": "^3.0.10",
+    "typescript": "4.5.4",
+    "use-ackee": "^3.0.0"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "none"
+  }
+}
