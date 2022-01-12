@@ -21,8 +21,8 @@ export default function Container(props) {
         <meta name="robots" content="follow, index" />
         <meta name="viewport" content="width=device-width" />
         <meta content={meta.description} name="description" />
-        <meta property="og:url" content={`https://blog.luciovilla.com${router.asPath}`} />
-        <link rel="canonical" href={`https://blog.luciovilla.com${router.asPath}`} />
+        <meta property="og:url" content={`https://github.com/zyj1022/notion-next-site${router.asPath}`} />
+        <link rel="canonical" href={`https://github.com/zyj1022/notion-next-site${router.asPath}`} />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content={meta.title} />
         <meta property="og:description" content={meta.description} />
@@ -38,7 +38,7 @@ export default function Container(props) {
       <Nav />
       <main id="skip" className="px-4">
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </>
   )

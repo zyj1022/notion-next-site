@@ -2,14 +2,6 @@ import Image from 'next/image';
 import Container from '../components/Container';
 import Link from 'next/link';
 import { getNotionData } from '../lib/getNotionData';
-// import { NotionRenderer } from 'react-notion-x';
-// import { NotionAPI } from 'notion-client';
-
-// const notionApi = new NotionAPI();
-
-// function HomeNotion({ recordMap }) {
-//   return <NotionRenderer recordMap={recordMap} fullPage={true} darkMode={false} />;
-// }
 
 export default function Home({ posts }) {
   return (
@@ -47,10 +39,6 @@ export default function Home({ posts }) {
 
 export const getStaticProps = async () => {
   const database = await getNotionData(process.env.NOTION_DATABASE_ID);
-  // const authToken: any = process.env.NOTION_ACCESS_TOKEN || null;
-  // const id: any = process.env.NOTION_PAGE_ID;
-  // const api = new NotionAPI({ authToken });
-  // const response = await api.getPage(id);
 
   console.log('response----', database);
 
