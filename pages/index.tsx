@@ -2,49 +2,57 @@ import Image from 'next/image';
 import Container from '../components/Container';
 import Link from 'next/link';
 import { getNotionData } from '../lib/getNotionData';
+import { getAllPosts } from '../lib/notion.js';
+import BlogPost from '../components/BlogPost';
+import SITE from '../site.config';
 
-export default function Home({ posts }) {
+const LinkComp = ({ children, slug }) => {
+  return (
+    <>
+      <Link href={`${SITE.path}/${slug}`}>
+        <a>{children}</a>
+      </Link>
+    </>
+  );
+};
+
+export default function Home({ postsToShow }) {
+  // console.log('Home----', postsToShow);
   return (
     <Container>
-      <div className="max-w-2xl mx-auto mb-16">
-        <h2 className="font-bold text-2xl md:text-3xl tracking-tight mb-4 mt-8 text-black">
-          Blog Posts
-        </h2>
+      <div className="max-w-2xl mx-auto">
+        <h2 className="text-xl ztitle">技术</h2>
+        {postsToShow.map((post) => (
+          // <BlogPost key={post.id} post={post} type={'post'} />
 
-        {!posts.length && <p className="text-gray-600 mb-4">No posts found.</p>}
-
-        {posts.map((post) => {
-          return (
-            <Link
-              key={post.id}
-              href={`/${post.properties.Slug.rich_text[0].plain_text}`}
-            >
-              <a className="w-full">
-                <div className="mb-8 w-full">
-                  <h3 className="text-xl font-medium w-full text-gray-900">
-                    {post.properties.Post.title[0].plain_text}
-                  </h3>
-                  <p className="text-gray-700 text-md">
-                    {post.properties.Description.rich_text[0].plain_text}
-                  </p>
-                </div>
-              </a>
-            </Link>
-          );
-        })}
+          <div className="p-4" key={post.id}>
+            <h2 className="text-xl py-2">{post.title}</h2>
+            <p>{post.summary}</p>
+          </div>
+        ))}
       </div>
     </Container>
   );
 }
 
-export const getStaticProps = async () => {
-  const database = await getNotionData(process.env.NOTION_DATABASE_ID);
+export async function getStaticProps() {
+  const posts = await getAllPosts({ includePages: true });
+  const topic = posts.filter((v) => v.topic === 'Yes');
+  const articles = posts.filter((v) => v.topic === 'No');
+  const page = posts.filter((v) => v.type.includes('Page'))
 
-  console.log('response----', database);
+  console.log('getStaticProps', page);
 
+  const postsToShow = articles.slice(0, SITE.postsPerPage);
+  const totalPosts = posts.length;
+  const showNext = totalPosts > SITE.postsPerPage;
   return {
     props: {
-      posts: database,
-    }
+      page: 1, // current page is 1
+      postsToShow,
+      topic,
+      showNext
+    },
+    revalidate: 1
   };
-};
+}
